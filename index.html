@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>  New MOT Msg App </title>
+        <style>
+            *{font-size: 40px;}
+            body{background-color: rgb(81, 255, 0);}
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1> New MOT Msg App</h1>
+            <form onsubmit="gm()">
+                
+            </form>
+            <h2 id="msg"/>
+            <h2 id="aut"/>
+
+            <script>
+                function gm(){
+                    
+                   
+                    let msg=document.getElementById("msg");
+                    let aut=document.getElementById("aut");
+                
+                let url="https://quotes-api-self.vercel.app/quote";
+                fetch(url)
+                .then(res=>res.json())
+                .then(data=>{
+                    let q=data.quote;
+                    let a=data.author;
+                    msg.innerHTML=q
+                    aut.innerHTML=a;
+                })
+                .catch(err=>alert("issue"+err));
+                
+                }
+                setInterval(gm,5000);
+                </script>
+        </center>
+    </body>
+</html>
